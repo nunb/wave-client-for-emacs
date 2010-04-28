@@ -1,0 +1,47 @@
+Using
+-----
+
+This branch of the wave-client-for-emacs project uses a direct
+connection to the same backend that the http://wave.google.com UI
+uses.  Because of this, we have access to all the wave instances,
+without having to wait for a client/server protocol or real
+federation.
+
+Both the UI and the backend are a work in progress.  Expect this to be
+read-only for the near future.
+
+To start using, set your load-path to point to this lisp directory for
+this project, and require the wave-list, which is the entry point for
+viewing waves.
+
+(add-to-list 'load-path "~/src/wave-client-for-emacs/lisp")
+(require 'wave-list)
+
+Then configure your username:
+
+(setq wave-client-user "mylogin")
+
+And now you can start viewing your waves:
+
+(wave-list-mode)
+
+That will connect you to the default wave instance (wave.google.com).
+To connect to a specific domain, such as sandbox, add this line as well:
+
+(setq wave-client-domain "wavesandbox.com")
+
+WARNING: This project currently utilizes the unpublished client/server
+protocol that wave.google.com's javascript uses to communicate with
+the wave servers. This is not a stable protocol supported by
+Google. This protocol is the Google Wave team's internal protocol and
+is under active development, so it may change at any time without
+regards for this or any other client.
+
+
+Known issues
+------------
+
+Deleted blips are shown.
+
+Blips are not shown in the same order as in the UI.
+
